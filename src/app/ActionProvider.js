@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 
 const openAI = new OpenAI({
-    apiKey: `process.env.REACT_APP_API_KEY`,
+    apiKey: `process.env.VOYAGEAI_APP_API_KEY`,
     baseURL: "https://api.aimlapi.com",
     dangerouslyAllowBrowser: true
 })
