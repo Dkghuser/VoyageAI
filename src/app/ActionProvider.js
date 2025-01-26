@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 
 const openAI = new OpenAI({
-    apiKey: `616344ef67344afc8594dac1df45a277`,
+    apiKey: `process.env.REACT_PUBLIC_API_KEY`,
     baseURL: "https://api.aimlapi.com",
     dangerouslyAllowBrowser: true
 })
