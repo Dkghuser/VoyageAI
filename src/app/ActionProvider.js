@@ -31,7 +31,7 @@ class ActionProvider {
 
     callGenAI = async (prompt) => {
         const chatCompletion = await openAI.chat.completions.create({
-            model: "gpt-3.5-turbo",
+            model: "gpt-3.5-turbo-instruct",
             messages: [
                 {role:"system", content: "You are VoyageAI, an AI Travel Guide chatbot designed to assist users in planning their trips. Provide personalized recommendations for destinations, itineraries, accommodations, local attractions, and travel tips. Always keep recommendations user-specific and regionally relevant. Respond with a friendly and informative tone, ensuring concise yet helpful answers."},
                 {role: "user", content: prompt}
