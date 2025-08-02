@@ -1,11 +1,3 @@
-import OpenAI from "openai";
-
-const openAI = new OpenAI({
-    apiKey: `process.env.VOYAGEAI_APP_API_KEY`,
-    baseURL: "https://api.aimlapi.com",
-    dangerouslyAllowBrowser: true
-})
-
 class ActionProvider {
     createChatBotMessage
     setState
@@ -30,16 +22,30 @@ class ActionProvider {
     }
 
     callGenAI = async (prompt) => {
-        const chatCompletion = await openAI.chat.completions.create({
-            model: "gpt-3.5-turbo-instruct",
-            messages: [
-                {role:"system", content: "You are VoyageAI, an AI Travel Guide chatbot designed to assist users in planning their trips. Provide personalized recommendations for destinations, itineraries, accommodations, local attractions, and travel tips. Always keep recommendations user-specific and regionally relevant. Respond with a friendly and informative tone, ensuring concise yet helpful answers."},
-                {role: "user", content: prompt}
-            ],
-            temperature: 0.7,
-            max_tokens: 100
-        });
-        return chatCompletion.choices[0].message.content
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
+            return data.response;
+        } catch (error) {
+            console.error('Error calling AI API:', error);
+            return "I'm sorry, I'm having trouble connecting to the AI service right now. Please try again later.";
+        }
     }
 
     timer = ms => new Promise(res => setTimeout(res, ms));
