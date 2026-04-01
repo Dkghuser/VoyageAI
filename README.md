@@ -1,17 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VoyageAI – AI Travel Guide
+
+A travel assistant chatbot built with [Next.js](https://nextjs.org) and [react-chatbot-kit](https://www.npmjs.com/package/react-chatbot-kit), powered by [Groq's free LLM API](https://console.groq.com) (LLaMA 3.3 70B).
 
 ## Getting Started
 
-First, run the development server:
+### 1. Get a free Groq API key
+
+1. Sign up at [console.groq.com](https://console.groq.com) (free, no credit card required).
+2. Create an API key under **API Keys**.
+
+### 2. Configure environment variables
 
 ```bash
+cp .env.local.example .env.local
+```
+
+Open `.env.local` and replace `your_groq_api_key_here` with the key you just created:
+
+```
+GROQ_API_KEY=gsk_...
+```
+
+### 3. Install dependencies and run the dev server
+
+```bash
+npm install
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
