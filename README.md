@@ -18,7 +18,7 @@ cp .env.local.example .env.local
 Open `.env.local` and replace `your_groq_api_key_here` with the key you just created:
 
 ```
-GROQ_API_KEY=gsk_...
+VOYAGEAI_APP_API_KEY=gsk_...
 ```
 
 ### 3. Install dependencies and run the dev server
