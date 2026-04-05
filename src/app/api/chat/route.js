@@ -3,13 +3,19 @@ import OpenAI from "openai";
 
 // Uses Groq's free-tier API (https://console.groq.com) which is OpenAI-SDK compatible.
 // Set GROQ_API_KEY in your .env.local file to a key obtained from console.groq.com.
-const groq = new OpenAI({
-  apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1",
-});
 
 export async function POST(req) {
   try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: 'GROQ_API_KEY is not configured' }, { status: 500 });
+    }
+
+    const groq = new OpenAI({
+      apiKey,
+      baseURL: "https://api.groq.com/openai/v1",
+    });
+
     const { prompt } = await req.json();
 
     const chatCompletion = await groq.chat.completions.create({
