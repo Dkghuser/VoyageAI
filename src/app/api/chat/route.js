@@ -2,7 +2,11 @@ import { NextResponse } from 'next/server';
 import OpenAI from "openai";
 
 // Uses Groq's free-tier API (https://console.groq.com) which is OpenAI-SDK compatible.
-// Set GROQ_API_KEY in your .env.local file to a key obtained from console.groq.com.
+
+const groq = new OpenAI({
+  apiKey: process.env.VOYAGEAI_APP_API_KEY,
+  baseURL: "https://api.groq.com/openai/v1",
+});
 
 export async function POST(req) {
   try {

@@ -9,19 +9,7 @@ A travel assistant chatbot built with [Next.js](https://nextjs.org) and [react-c
 1. Sign up at [console.groq.com](https://console.groq.com) (free, no credit card required).
 2. Create an API key under **API Keys**.
 
-### 2. Configure environment variables
-
-```bash
-cp .env.local.example .env.local
-```
-
-Open `.env.local` and replace `your_groq_api_key_here` with the key you just created:
-
-```
-GROQ_API_KEY=gsk_...
-```
-
-### 3. Install dependencies and run the dev server
+### 2. Install dependencies and run the dev server
 
 ```bash
 npm install
