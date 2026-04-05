@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.1.6",
+    "next": "15.5.14",
     "openai": "^4.80.0",
     "react": "^19.0.0",
     "react-chatbot-kit": "^2.2.2",
@@ -18,6 +18,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.1.6"
+    "eslint-config-next": "15.5.14"
   }
 }
