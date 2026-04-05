@@ -10,6 +10,16 @@ const groq = new OpenAI({
 
 export async function POST(req) {
   try {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ error: 'GROQ_API_KEY is not configured' }, { status: 500 });
+    }
+
+    const groq = new OpenAI({
+      apiKey,
+      baseURL: "https://api.groq.com/openai/v1",
+    });
+
     const { prompt } = await req.json();
 
     const chatCompletion = await groq.chat.completions.create({
